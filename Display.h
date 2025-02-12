@@ -2,13 +2,13 @@
 #define DISPLAY_H
 
 #include <string>
-#include <SDL2/SDL.h> // Dodaj ovu liniju
+#include <SDL2/SDL.h> 
 
 class Display {
     public:
         Display(int width, int height, const std::string& title);
         void Update();
-        bool isClosed(); // Ispravi naziv metode
+        bool isClosed(); 
 
         virtual ~Display();
     protected:
@@ -18,6 +18,6 @@ class Display {
 
         SDL_Window* m_window;
         SDL_GLContext m_glContext;
-        bool m_isClosed; // Popravi naziv promenljive
+        bool m_isClosed; 
 };
 #endif

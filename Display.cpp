@@ -32,7 +32,7 @@ Display::Display(int width, int height, const std::string& title) {
         std::cerr << "GLEW failed to initialize!" << std::endl;
     }
 
-    m_isClosed = false; // Ispravi naziv promenljive
+    m_isClosed = false; 
 }
 
 Display::~Display() {
@@ -41,7 +41,7 @@ Display::~Display() {
     SDL_Quit();
 }
 
-bool Display::isClosed() { // Ispravi naziv metode
+bool Display::isClosed() { 
     return m_isClosed;
 }
 
@@ -51,7 +51,7 @@ void Display::Update() {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
         if (e.type == SDL_QUIT) {
-            m_isClosed = true; // Ispravi naziv promenljive
+            m_isClosed = true; 
         }
     }
 }
