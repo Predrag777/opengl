@@ -17,6 +17,7 @@ class Vertex{
 class Mesh{
     public:
         Mesh(Vertex* vertices, unsigned int numVertices);
+        void Draw();
         virtual ~Mesh();
     protected:
     private:
@@ -25,12 +26,11 @@ class Mesh{
 
         enum{
             POSITION_VB,
-
             NUM_BUFFERS
         };
 
         GLuint m_vertexArrayObject;
-        GLuint m_vertexArrayBuffers(NUM_BUFFERS);
+        GLuint m_vertexArrayBuffers[NUM_BUFFERS];
         unsigned int m_drawCount;
 };
 
