@@ -4,9 +4,9 @@
 #include "Shader.h"
 
 int main(){
-    Display display(800, 800, "Waffen SS");
+    Display display(800, 800, "First project");
 
-    Shader shader("/res/basicShader");
+    Shader shader("res/basicShader");
 
     while(!display.isClosed()){
         glClear(GL_COLOR_BUFFER_BIT);
