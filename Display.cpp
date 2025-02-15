@@ -2,24 +2,25 @@
 #include <iostream>
 #include <GL/glew.h>
 
-Display::Display(int width, int height, const std::string& title) {
-    SDL_Init(SDL_INIT_EVERYTHING);
+Display::Display(int width, int height, const std::string& title) {//Konstruktor
+    SDL_Init(SDL_INIT_EVERYTHING);              //Init video, sound, keys input, window control...
 
     SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
-    SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
-    SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE, 32);
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);  // RGB 24 bits and 8bit for alpha => transparency
 
-    m_window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
-    if (!m_window) {
+    SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE, 32); //Create buffer for 32 bit 
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1); // Use doublebuffer for enabling smoot rendering
+
+    m_window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL); //Create window on the center of the screen
+    if (!m_window) {// If window is not created
         std::cerr << "Failed to create SDL window: " << SDL_GetError() << std::endl;
         SDL_Quit();
         return;
     }
 
-    m_glContext = SDL_GL_CreateContext(m_window);
+    m_glContext = SDL_GL_CreateContext(m_window);// Kontekst je skup metoda renderovanja
     if (!m_glContext) {
         std::cerr << "Failed to create OpenGL context: " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(m_window);
@@ -27,7 +28,7 @@ Display::Display(int width, int height, const std::string& title) {
         return;
     }
 
-    GLenum status = glewInit();
+    GLenum status = glewInit(); // Inicijalizacija glew zato sto moderni opengl zahteva glew ekstenziju
     if (status != GLEW_OK) {
         std::cerr << "GLEW failed to initialize!" << std::endl;
     }
@@ -35,7 +36,7 @@ Display::Display(int width, int height, const std::string& title) {
     m_isClosed = false; 
 }
 
-Display::~Display() {
+Display::~Display() { // Destruktor
     SDL_GL_DeleteContext(m_glContext);
     SDL_DestroyWindow(m_window);
     SDL_Quit();
