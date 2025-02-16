@@ -18,6 +18,7 @@ int main(){
     while(!display.isClosed()){
         display.Clear(0.0f, 0.15f, 0.3f, 1.0f);
         //texture.Bind(0);
+        
         shader.Bind();
         mesh.Draw();
 
