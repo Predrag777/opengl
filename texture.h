@@ -3,19 +3,22 @@
 
 #include <string>
 #include <GL/glew.h>
+#include <iostream>
 
-class Texture{
+class Texture
+{
+public:
+	Texture(const std::string& fileName);
 
-    public:
-        Texture(const std::string& filename);
-        void Bind(unsigned int unit);
-        virtual ~Texture();
-    protected:
-    private:
-        Texture(const Texture& other){}
-        void operator=(const Texture& other){}
-        GLuint m_texture;
-}
+	void Bind();
 
+	virtual ~Texture();
+protected:
+private:
+	Texture(const Texture& texture) {}
+	void operator=(const Texture& texture) {}
+
+	GLuint m_texture;
+};
 
 #endif
