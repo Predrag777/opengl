@@ -20,15 +20,21 @@ int main(){
     Texture texture("./res/bricks.jpg");
     Transform transform;
 
+    float counter=0.0f;
+
     while (!display.isClosed()) {
         display.Clear(0.0f, 0.15f, 0.3f, 1.0f);
     
+        transform.GetPos()->x = sinf(counter);
+
+
         shader.Bind();
         texture.Bind(0);
         shader.Update(transform);
         mesh.Draw();
     
         display.Update();
+        counter+=0.1f;
     }
     
     return 0;
