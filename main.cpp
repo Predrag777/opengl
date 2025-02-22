@@ -5,6 +5,7 @@
 #include "Mesh.h"
 #include "Texture.h"
 
+
 int main(){
     Display display(800, 800, "First project");
 

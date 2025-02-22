@@ -1,6 +1,9 @@
 #include "Shader.h"
 #include <iostream>
 #include <fstream>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 Shader::Shader(const std::string& fileName)
 {
