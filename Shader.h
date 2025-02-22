@@ -21,9 +21,8 @@ private:
 	Shader(const Shader& shader) {}
 
 	enum{
-		TRANSFORM_U,
-
-		NUM_UNIFORMS
+		TRANSFORM_U
+		//,NUM_UNIFORMS
 	};
 
 	std::string LoadShader(const std::string& fileName);
