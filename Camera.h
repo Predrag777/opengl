@@ -3,6 +3,7 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
+#include <string>
 
 class Camera{
     public:
@@ -15,6 +16,8 @@ class Camera{
         }
 
         inline glm::mat4 GetViewProjection() const{
+            //std::cout << "Camera Position: " << glm::to_string(m_position) << std::endl;
+
             return m_perspective*glm::lookAt(m_position, m_position+m_forward, m_up);
         }
     protected:

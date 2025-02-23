@@ -20,7 +20,7 @@ int main(){
     };
     
     Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]));
-    Camera camera(glm::vec3(0,0,-3), 70.0f, (float) WIDTH/(float) HEIGHT, 0.01f, 1000.0f);
+    Camera camera(glm::vec3(0,0,-1), 70.0f, (float) WIDTH/(float) HEIGHT, 0.01f, 1000.0f);
     Shader shader("./res/basicShader");
     Texture texture("./res/bricks.jpg");
     Transform transform;
