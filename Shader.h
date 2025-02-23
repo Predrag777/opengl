@@ -4,12 +4,14 @@
 #include <string>
 #include <GL/glew.h>
 #include "transform.h"
+#include "Camera.h"
+
 
 class Shader
 {
 public:
 	Shader(const std::string& fileName);
-	void Update(const Transform& transform);
+	void Update(const Transform& transform, const Camera& camera);
 	void Bind();
 
 	virtual ~Shader();

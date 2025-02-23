@@ -5,6 +5,10 @@
 #include "Mesh.h"
 #include "Texture.h"
 #include "transform.h"
+#include "Camera.h"
+
+#define WIDTH 800
+#define HEIGHT 600
 
 int main(){
     Display display(800, 800, "First project");
@@ -16,6 +20,7 @@ int main(){
     };
     
     Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]));
+    Camera camera(glm::vec3(0,0,-3), 70.0f, (float) WIDTH/(float) HEIGHT, 0.01f, 1000.0f);
     Shader shader("./res/basicShader");
     Texture texture("./res/bricks.jpg");
     Transform transform;
@@ -30,11 +35,11 @@ int main(){
 
         shader.Bind();
         texture.Bind(0);
-        shader.Update(transform);
+        shader.Update(transform, camera);
         mesh.Draw();
     
         display.Update();
-        counter+=0.1f;
+        counter+=0.00001f;
     }
     
     return 0;

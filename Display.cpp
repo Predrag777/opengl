@@ -36,7 +36,7 @@ Display::Display(int width, int height, const std::string& title) {//Konstruktor
     m_isClosed = false; 
 }
 
-Display::~Display() { // Destruktor
+Display::~Display() { // Destruktor. Without destructor, it woiuld lead to memory leak and bad performance.
     SDL_GL_DeleteContext(m_glContext);
     SDL_DestroyWindow(m_window);
     SDL_Quit();
@@ -52,7 +52,7 @@ void Display::Clear(float r, float g, float b, float a)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Display::Update() {
+void Display::Update() {// Update is related to changing between two  buffer to avoid flickering. First buffer is the front image, second buffer contain nex image.
     SDL_GL_SwapWindow(m_window);
 
     SDL_Event e;
